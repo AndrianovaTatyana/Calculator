@@ -6,7 +6,7 @@ public class Calculator {
     public static void main(String[] args) {
         System.out.println("Введите что-нибудь");
         String expression = scanner.nextLine();
-        String[] data = expression.replace(" ", "").split("(?=\\+)|(?<=\\+)|(?=\\*)|(?<=\\*)|(?=\\-)|(?<=\\-)|(?=\\\\)|(?<=\\\\)");
+        String[] data = expression.replace(" ", "").split("(?=\\+)|(?<=\\+)|(?=\\*)|(?<=\\*)|(?=\\-)|(?<=\\-)|(?=/)|(?<=/)");
         try {
             String result = String.valueOf(processInput(data));
             System.out.println(result);
