@@ -25,21 +25,26 @@ public class Calculator {
                 throw new Exception();
             }
             char operation = data[1].charAt(0);
-            return calc(firstOperand, secondOperand, operation);
+            return String.valueOf(calc(firstOperand, secondOperand, operation));
         }
+
         if (RomanNumberTranslator.translateFromRoman(data[0]) != null) {
             int firstOperand = Integer.parseInt(RomanNumberTranslator.translateFromRoman(data[0]));
             int secondOperand = Integer.parseInt(RomanNumberTranslator.translateFromRoman(data[2]));
             char operation = data[1].charAt(0);
-            String result = calc(firstOperand, secondOperand, operation);
-            String romanResult = RomanNumberTranslator.translateToRoman(result);
+            int result = calc(firstOperand, secondOperand, operation);
+            if(result < 0){
+                throw new Exception();
+            }
+            var stringResult = String.valueOf(result);
+            String romanResult = RomanNumberTranslator.translateToRoman(stringResult);
             return romanResult;
         }
         return null;
 
     }
 
-    public static String calc(int num1, int num2, char operation) {
+    public static int calc(int num1, int num2, char operation) {
         int result = 0;
         switch (operation) {
             case '+':
@@ -57,6 +62,6 @@ public class Calculator {
             default:
                 result = 0;
         }
-        return String.valueOf(result);
+        return result;
     }
 }
